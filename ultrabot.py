@@ -2,12 +2,31 @@ import json
 import requests
 import datetime
 
+from Info_carreer import (
+    Administracion_de_Empresas,
+    Derecho,
+    Licenciatura_en_Educacion_Infantil,
+    Contaduria_Publica,
+    Software,
+    Ambiental,
+    Electronica,
+    Finanzas,
+    Ingeniería_Energetica,
+    Gobierno_Relaciones_Internacionales,
+    Matematicas,
+    Ing_civil,
+    inscripcion,
+    Oferta,
+    homologacion,
+    reingreso,
+)
+
 class ultraChatBot():    
     def __init__(self, json):
         self.json = json
         self.dict_messages = json['data']
-        self.ultraAPIUrl = 'https://api.ultramsg.com/{{instance_id}}/'
-        self.token = '{{token}}'
+        self.ultraAPIUrl = 'https://api.ultramsg.com/instance50370/'
+        self.token = '2830g2heterp7efd'
 
    
     def send_requests(self, type, data):
@@ -22,59 +41,92 @@ class ultraChatBot():
         answer = self.send_requests('messages/chat', data)
         return answer
 
-    def send_image(self, chatID):
-        data = {"to" : chatID,
-                "image" : "https://file-example.s3-accelerate.amazonaws.com/images/test.jpeg"}  
-        answer = self.send_requests('messages/image', data)
-        return answer
+    ############# #informacion carreras ##########
+    def Info_carrera(self,chatID):
+        info_programa="Genial, ¿que carrera quieres conocer?\n\n 1) Derecho \n\n 2) Administración de Empresas \n\n 3) Licenciatura en Educación Infantil \n\n 4) Contaduría Pública \n\n 5) Ingeniería de Software y Computación \n\n 6) Ingeniería Ambiental y de Saneamiento \n\n 7) Ingeniería Electrónica \n\n 8) Ingeniería Energética \n\n 9) Gobierno y Relaciones Internacionales \n\n 10) Finanzas y negocios Internacional \n\n 11) Ingeniería civil \n\n  l2) Matemáticas aplicadas en Ciencias de datos "
+        return self.send_message(chatID,info_programa)
+    
+    def Derecho_(self, chatID):
+        Info_Derecho = Derecho 
+        return self.send_message(chatID, Info_Derecho)
+    
+    def Administracion_(self, chatID):
+        Info_Administracion = Administracion_de_Empresas
+        return self.send_message(chatID, Info_Administracion)
+    
+    def Licenciatura_(self, chatID):
+        Info_Licenciatura = Licenciatura_en_Educacion_Infantil 
+        return self.send_message(chatID, Info_Licenciatura)
 
-    def send_video(self, chatID):
-        data = {"to" : chatID,
-                "video" : "https://file-example.s3-accelerate.amazonaws.com/video/test.mp4"}  
-        answer = self.send_requests('messages/video', data)
-        return answer
+    def Contaduria_(self, chatID):
+        Info_Contaduria = Contaduria_Publica
+        return self.send_message(chatID, Info_Contaduria)
 
-    def send_audio(self, chatID):
-        data = {"to" : chatID,
-                "audio" : "https://file-example.s3-accelerate.amazonaws.com/audio/2.mp3"}  
-        answer = self.send_requests('messages/audio', data)
-        return answer
+    def Software_(self, chatID):
+        Info_Software = Software
+        return self.send_message(chatID, Info_Software)
+    
+    def Ambiental_(self, chatID):
+        Info_Ambiental = Ambiental
+        return self.send_message(chatID, Info_Ambiental)
+    
+    def Electronica_(self, chatID):
+        Info_Electronica = Electronica
+        return self.send_message(chatID, Info_Electronica)
 
+    def Enegertica_(self, chatID):
+        Info_Enegertica = Ingeniería_Energetica
+        return self.send_message(chatID, Info_Enegertica)
+    
+    def Gobierno_y_relaciones_int_(self, chatID):
+        Info_Gobierno_y_relaciones_int_ = Gobierno_Relaciones_Internacionales
+        return self.send_message(chatID, Info_Gobierno_y_relaciones_int_)
+    
+    def Finanzas_(self, chatID):
+        Info_Finanzas = Finanzas
+        return self.send_message(chatID, Info_Finanzas)
+    
+    def Civil_(self, chatID):
+        Info_Civil= Ing_civil
+        return self.send_message(chatID, Info_Civil)
 
-    def send_voice(self, chatID):
-        data = {"to" : chatID,
-                "audio" : "https://file-example.s3-accelerate.amazonaws.com/voice/oog_example.ogg"}  
-        answer = self.send_requests('messages/voice', data)
-        return answer
+    def Matematicas_(self, chatID):
+        Info_Matematicas= Matematicas
+        return self.send_message(chatID, Info_Matematicas)
+    
+    ######################
 
-    def send_contact(self, chatID):
-        data = {"to" : chatID,
-                "contact" : "14000000001@c.us"}  
-        answer = self.send_requests('messages/contact', data)
-        return answer
+    def Oferta_academica(self,chatID):
+        oferta=Oferta
+        return self.send_message(chatID,oferta)
+    
+    def Inscripcion(self,chatID):
+        inscripcion_= inscripcion
+        return self.send_message(chatID,inscripcion_)
 
+    def Reingreso(self,chatID):
+        reingreso_= reingreso
+        return self.send_message(chatID,reingreso_)
 
-    def time(self, chatID):
-        t = datetime.datetime.now()
-        time = t.strftime('%Y-%m-%d %H:%M:%S')
-        return self.send_message(chatID, time)
+    def Homologacion_(self,chatID):
+        homologacion_= homologacion
+        return self.send_message(chatID,homologacion_)
+
 
 
     def welcome(self,chatID, noWelcome = False):
         welcome_string = ''
         if (noWelcome == False):
-            welcome_string = "Hi , welcome to WhatsApp chatbot using Python\n"
+            welcome_string = "💙¡Bienvenido al ChatBot de la Uniautonoma del Cauca!💙"
         else:
-            welcome_string = """wrong command
-Please type one of these commands:
-*hi* : Saluting
-*time* : show server time
-*image* : I will send you a picture
-*video* : I will send you a Video
-*audio* : I will send you a audio file
-*voice* : I will send you a ppt audio recording
-*contact* : I will send you a contact
-"""
+            welcome_string = """💙¡Bienvenido al ChatBot de la Uniautonoma del Cauca!💙
+            ¿Que deseas saber?:
+a.Información por programa 
+b.Información Proceso de inscripción
+c.Oferta Academica
+d.Solicitud Reingreso 
+e.Proceso Homologación
+            """
         return self.send_message(chatID, welcome_string)
 
 
@@ -84,20 +136,42 @@ Please type one of these commands:
             text = message['body'].split()
             if not message['fromMe']:
                 chatID  = message['from'] 
-                if text[0].lower() == 'hi':
+                if text[0].lower() == '':
                     return self.welcome(chatID)
-                elif text[0].lower() == 'time':
-                    return self.time(chatID)
-                elif text[0].lower() == 'image':
-                    return self.send_image(chatID)
-                elif text[0].lower() == 'video':
-                    return self.send_video(chatID)
-                elif text[0].lower() == 'audio':
-                    return self.send_audio(chatID)
-                elif text[0].lower() == 'voice':
-                    return self.send_voice(chatID)
-                elif text[0].lower() == 'contact':
-                    return self.send_contact(chatID)
+                elif text[0].lower() == 'a':
+                    return self.Info_carrera(chatID)
+                elif text[0].lower() == 'b':
+                    return self.Inscripcion(chatID)
+                elif text[0].lower() == 'c':
+                    return self.Oferta_academica(chatID)
+                elif text[0].lower() == 'd':
+                    return self.Reingreso(chatID)
+                elif text[0].lower() == 'e':
+                    return self.Homologacion_(chatID)
+                elif text[0].lower() == '1':
+                    return self.Derecho_(chatID)
+                elif text[0].lower() == '2':
+                    return self.Administracion_(chatID)
+                elif text[0].lower() == '3':
+                    return self.Licenciatura_(chatID)
+                elif text[0].lower() == '4':
+                    return self.Contaduria_(chatID)
+                elif text[0].lower() == '5':
+                    return self.Software_(chatID)
+                elif text[0].lower() == '6':
+                    return self.Ambiental_(chatID)
+                elif text[0].lower() == '7':
+                    return self.Electronica_(chatID)
+                elif text[0].lower() == '8':
+                    return self.Enegertica_(chatID)
+                elif text[0].lower() == '9':
+                    return self.Gobierno_y_relaciones_int_(chatID)
+                elif text[0].lower() == '10':
+                    return self.Finanzas_(chatID)
+                elif text[0].lower() == '11':
+                    return self.Civil_(chatID)
+                elif text[0].lower() == '12':
+                    return self.Matematicas_(chatID)
                 else:
                     return self.welcome(chatID, True)
             else: return 'NoCommand'
@@ -105,7 +179,3 @@ Please type one of these commands:
 
         
         
-
-
-
-
