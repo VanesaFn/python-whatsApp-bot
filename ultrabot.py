@@ -43,11 +43,12 @@ class ultraChatBot():
 
     ############# #informacion carreras ##########
     def Info_carrera(self,chatID):
-        info_programa="Genial, ¿que carrera quieres conocer?\n\n 1) Derecho \n\n 2) Administración de Empresas \n\n 3) Licenciatura en Educación Infantil \n\n 4) Contaduría Pública \n\n 5) Ingeniería de Software y Computación \n\n 6) Ingeniería Ambiental y de Saneamiento \n\n 7) Ingeniería Electrónica \n\n 8) Ingeniería Energética \n\n 9) Gobierno y Relaciones Internacionales \n\n 10) Finanzas y negocios Internacional \n\n 11) Ingeniería civil \n\n  l2) Matemáticas aplicadas en Ciencias de datos "
+        info_programa="Genial, ¿qué carrera quieres conocer?\n\n 1) Derecho \n\n 2) Administración de Empresas \n\n 3) Licenciatura en Educación Infantil \n\n 4) Contaduría Pública \n\n 5) Ingeniería de Software y Computación \n\n 6) Ingeniería Ambiental y de Saneamiento \n\n 7) Ingeniería Electrónica \n\n 8) Ingeniería Energética \n\n 9) Gobierno y Relaciones Internacionales \n\n 10) Finanzas y negocios Internacionales \n\n 11) Ingeniería civil \n\n  l2) Matemáticas aplicadas en Ciencias de datos "
         return self.send_message(chatID,info_programa)
     
     def Derecho_(self, chatID):
         Info_Derecho = Derecho 
+        
         return self.send_message(chatID, Info_Derecho)
     
     def Administracion_(self, chatID):
@@ -117,13 +118,13 @@ class ultraChatBot():
     def welcome(self,chatID, noWelcome = False):
         welcome_string = ''
         if (noWelcome == False):
-            welcome_string = "💙¡Bienvenido al ChatBot de la Uniautonoma del Cauca!💙"
+            welcome_string = "💙¡Bienvenido al ChatBot de la Uniautónoma del Cauca!💙"
         else:
-            welcome_string = """💙¡Bienvenido al ChatBot de la Uniautonoma del Cauca!💙
-            ¿Que deseas saber?:
+            welcome_string = """💙¡Bienvenido al ChatBot de la Uniautónoma del Cauca!💙
+            ¿Qué deseas saber?:
 a.Información por programa 
 b.Información Proceso de inscripción
-c.Oferta Academica
+c.Oferta Académica
 d.Solicitud Reingreso 
 e.Proceso Homologación
             """
