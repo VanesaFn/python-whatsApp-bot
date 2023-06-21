@@ -11,14 +11,14 @@ from Info_carreer import (
     Ambiental,
     Electronica,
     Finanzas,
-    Ingeniería_Energetica,
-    Gobierno_Relaciones_Internacionales,
-    Matematicas,
     Ing_civil,
     inscripcion,
-    Oferta,
     homologacion,
     reingreso,
+    gestion_integral,
+    proyectos_de_desarrollo,
+    pedagogia,
+    defensa_derechos_humanos
 )
 
 class ultraChatBot():    
@@ -43,8 +43,12 @@ class ultraChatBot():
 
     ############# #informacion carreras ##########
     def Info_carrera(self,chatID):
-        info_programa="Genial, ¿qué carrera quieres conocer?\n\n 1) Derecho \n\n 2) Administración de Empresas \n\n 3) Licenciatura en Educación Infantil \n\n 4) Contaduría Pública \n\n 5) Ingeniería de Software y Computación \n\n 6) Ingeniería Ambiental y de Saneamiento \n\n 7) Ingeniería Electrónica \n\n 8) Ingeniería Energética \n\n 9) Gobierno y Relaciones Internacionales \n\n 10) Finanzas y negocios Internacionales \n\n 11) Ingeniería civil \n\n  l2) Matemáticas aplicadas en Ciencias de datos "
+        info_programa="Genial, ¿qué carrera quieres conocer?\n\n 1. Derecho \n\n 2. Administración de Empresas \n\n 3. Licenciatura en Educación Infantil \n\n 4. Contaduría Pública \n\n 5. Ingeniería de Software y Computación \n\n 6. Ingeniería Ambiental y de Saneamiento \n\n 7. Ingeniería Electrónica \n\n 8. Finanzas y negocios Internacionales \n\n 9. Ingeniería civil \n\n 💙 Para regresar a nuestro menú principal escribe: menú 💙 "
         return self.send_message(chatID,info_programa)
+    
+    def Info_especializacion(self,chatID):
+        info_especializacion="Genial, ¿En qué especialización estás interesado?\n\n 10. Especialización en Gestión Integral del Riesgo de Desastres \n\n 11. Especialización en Proyectos de Desarrollo \n\n 12. Especialización en Pedagogía \n\n 13. Especialización en Promoción y Defensa de los Derechos Humanos \n\n 💙 Para regresar a nuestro menú principal escribe: menú 💙 "
+        return self.send_message(chatID,info_especializacion)
     
     def Derecho_(self, chatID):
         Info_Derecho = Derecho 
@@ -74,32 +78,32 @@ class ultraChatBot():
     def Electronica_(self, chatID):
         Info_Electronica = Electronica
         return self.send_message(chatID, Info_Electronica)
-
-    def Enegertica_(self, chatID):
-        Info_Enegertica = Ingeniería_Energetica
-        return self.send_message(chatID, Info_Enegertica)
-    
-    def Gobierno_y_relaciones_int_(self, chatID):
-        Info_Gobierno_y_relaciones_int_ = Gobierno_Relaciones_Internacionales
-        return self.send_message(chatID, Info_Gobierno_y_relaciones_int_)
     
     def Finanzas_(self, chatID):
         Info_Finanzas = Finanzas
         return self.send_message(chatID, Info_Finanzas)
     
     def Civil_(self, chatID):
-        Info_Civil= Ing_civil
+        Info_Civil = Ing_civil
         return self.send_message(chatID, Info_Civil)
-
-    def Matematicas_(self, chatID):
-        Info_Matematicas= Matematicas
-        return self.send_message(chatID, Info_Matematicas)
+    
+    def Gestion_(self, chatID):
+        Info_gestion = gestion_integral
+        return self.send_message(chatID, Info_gestion)
+    
+    def Proyectos_(self, chatID):
+        Info_proyectos = proyectos_de_desarrollo
+        return self.send_message(chatID, Info_proyectos)
+    
+    def Pedagogia_(self, chatID):
+        Info_pedagogia = pedagogia
+        return self.send_message(chatID, Info_pedagogia)
+    
+    def Defensa_(self, chatID):
+        Info_defensa = defensa_derechos_humanos
+        return self.send_message(chatID, Info_defensa)
     
     ######################
-
-    def Oferta_academica(self,chatID):
-        oferta=Oferta
-        return self.send_message(chatID,oferta)
     
     def Inscripcion(self,chatID):
         inscripcion_= inscripcion
@@ -120,13 +124,15 @@ class ultraChatBot():
         if (noWelcome == False):
             welcome_string = "💙¡Bienvenido al ChatBot de la Uniautónoma del Cauca!💙"
         else:
-            welcome_string = """💙¡Bienvenido al ChatBot de la Uniautónoma del Cauca!💙
-            ¿Qué deseas saber?:
-a.Información por programa 
-b.Información Proceso de inscripción
-c.Oferta Académica
-d.Solicitud Reingreso 
-e.Proceso Homologación
+            welcome_string = """💙¡Hola Soy kime, Bienvenido a la Uniautónoma del Cauca!💙
+                Estoy listo para ayudarte.
+                Elige una opción:
+            
+a. ¿Quieres conocer nuestros programas? 
+b. ¿Cómo realizo mi inscripción?
+c. ¿Quieres regresar a la UniAutonoma?
+d. ¿Quieres hacer un proceso de Homologación?
+e. ¿Deseas conocer nuestras especializaciones?
             """
         return self.send_message(chatID, welcome_string)
 
@@ -144,11 +150,11 @@ e.Proceso Homologación
                 elif text[0].lower() == 'b':
                     return self.Inscripcion(chatID)
                 elif text[0].lower() == 'c':
-                    return self.Oferta_academica(chatID)
-                elif text[0].lower() == 'd':
                     return self.Reingreso(chatID)
-                elif text[0].lower() == 'e':
+                elif text[0].lower() == 'd':
                     return self.Homologacion_(chatID)
+                elif text[0].lower() == 'e':
+                    return self.Info_especializacion(chatID)
                 elif text[0].lower() == '1':
                     return self.Derecho_(chatID)
                 elif text[0].lower() == '2':
@@ -164,15 +170,17 @@ e.Proceso Homologación
                 elif text[0].lower() == '7':
                     return self.Electronica_(chatID)
                 elif text[0].lower() == '8':
-                    return self.Enegertica_(chatID)
-                elif text[0].lower() == '9':
-                    return self.Gobierno_y_relaciones_int_(chatID)
-                elif text[0].lower() == '10':
                     return self.Finanzas_(chatID)
-                elif text[0].lower() == '11':
+                elif text[0].lower() == '9':
                     return self.Civil_(chatID)
+                elif text[0].lower() == '10':
+                    return self.Gestion_(chatID)
+                elif text[0].lower() == '11':
+                    return self.Proyectos_(chatID)
                 elif text[0].lower() == '12':
-                    return self.Matematicas_(chatID)
+                    return self.Pedagogia_(chatID)
+                elif text[0].lower() == '13':
+                    return self.Defensa_(chatID)
                 else:
                     return self.welcome(chatID, True)
             else: return 'NoCommand'
